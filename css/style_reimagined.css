@@ -1,0 +1,637 @@
+/* 
+    视力健康筛查报告 (优化版) - CSS样式表
+    版本: Reimagined
+    作者: AI Worker
+*/
+
+/* I. 全局与基础样式 (Global & Base Styles) */
+
+/* 简易重置 (Simple Reset) */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+}
+
+/* CSS变量定义 (CSS Variables Definition) */
+:root {
+    --color-primary-text: #222222; /* 主文字色 */
+    --color-secondary-text: #555555; /* 次要文字色 */
+    --color-tertiary-text: #888888; /* 辅助文字色 */
+    --color-accent: #3478F6; /* 强调色/品牌蓝 */
+    --color-accent-hover: #2563EB; /* 强调色悬停 */
+    --color-risk: #FF6B6B; /* 风险警示色 */
+    --color-background-page: #F9FAFB; /* 页面背景 */
+    --color-background-module: #FFFFFF; /* 模块/卡片背景 */
+    --color-border: #E5E7EB; /* 边框颜色 */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif; /* 基础字体栈 */
+    --border-radius-base: 8px; /* 基础圆角 */
+    --shadow-base: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.08); /* 基础阴影 */
+    /* 中文注释：定义常用颜色、字体、圆角、阴影等变量 */
+}
+
+body { 
+    font-family: var(--font-family-base); 
+    font-size: 16px; 
+    line-height: 1.6; 
+    background-color: var(--color-background-page); 
+    color: var(--color-primary-text); 
+}
+
+img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+a { 
+    color: var(--color-accent); 
+    text-decoration: none; 
+}
+a:hover { 
+    text-decoration: underline; 
+    color: var(--color-accent-hover);
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    margin-bottom: 0.6em; 
+    line-height: 1.3; 
+    font-weight: 600; /* 默认Semi-Bold */ 
+}
+h1 { font-size: 2.25rem; /* 36px */ } 
+h2 { font-size: 1.75rem; /* 28px */ } 
+h3 { font-size: 1.25rem; /* 20px */ } 
+h4 { font-size: 1rem; /* 16px */ }
+/* 中文注释：以上为基础设定，具体数值可在组件中覆盖 */
+
+/* II. 布局与容器 (Layout & Containers) */
+
+.container {
+    max-width: 800px; /* 报告内容区域宽度，可调整 */
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.report-header {
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.report-header h1 {
+    color: var(--color-primary-text);
+}
+
+.report-main .container > section:not(:last-child) {
+    margin-bottom: 25px; /* 模块间距 */
+}
+
+.report-module {
+    background-color: var(--color-background-module);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base);
+    padding: 20px; /* 模块内边距 */
+}
+.module-title {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 10px;
+    font-size: 1.5rem; /* 24px */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+.data-subsection {
+    margin-bottom: 20px;
+}
+.subsection-title {
+    font-size: 1.125rem; /* 18px */
+    color: var(--color-secondary-text);
+    margin-bottom: 10px;
+}
+
+.table-wrapper {
+    overflow-x: auto; /* 表格响应式滚动 */
+    margin-bottom: 10px; /* Add some margin for the wrapper itself */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid var(--color-border);
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.9rem; /* Slightly smaller table font */
+}
+thead th {
+    background-color: #F3F4F6; /* 表头浅灰背景 */
+    font-weight: 500; /* Medium */
+    color: var(--color-secondary-text);
+}
+.table-caption {
+    font-size: 0.875rem;
+    color: var(--color-tertiary-text);
+    margin-top: 8px;
+    text-align: right;
+}
+
+/* III. 特定组件样式 (Specific Component Styles) */
+
+/* 概览 (.overview-highlight) */
+.overview-highlight {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px; /* Increased padding */
+    background-color: #f0f8ff; /* 淡蓝色背景提示 (AliceBlue) */
+    border-radius: var(--border-radius-base);
+    border: 1px solid #cfe2f3; /* Softer border for the blue background */
+}
+.percentage-ring {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-risk);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5); /* Glow for risk color */
+}
+.percentage-value {
+    font-size: 2rem; /* 32px */
+    font-weight: 700; /* Bold */
+    color: white;
+}
+.risk-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-primary-text); /* Darker text for better contrast on light blue */
+}
+.risk-description strong { /* If any strong tags are used inside */
+    color: var(--color-risk);
+}
+
+/* 可折叠/展开 (details.expandable-section) */
+details.expandable-section {
+    margin-bottom: 10px;
+}
+.expandable-summary {
+    cursor: pointer;
+    font-weight: 500; /* Medium */
+    color: var(--color-primary-text);
+    padding: 12px 0; /* Increased padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none; /* 移除原生箭头 */
+    border-bottom: 1px solid var(--color-border); /* Separator for summary */
+}
+.expandable-summary::-webkit-details-marker { 
+    display: none; 
+}
+.summary-title {
+    flex-grow: 1;
+}
+.expand-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease-in-out;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236B7280'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); /* 灰色右箭头SVG */
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(0deg);
+}
+details[open] > .expandable-summary {
+    border-bottom-color: transparent; /* Hide border when open */
+}
+details[open] > .expandable-summary .expand-icon {
+    transform: rotate(90deg);
+}
+.expandable-content {
+    padding: 15px 0 15px 20px; /* 内容区域, L padding increased */
+    border-left: 3px solid var(--color-accent); /* Thicker accent line */
+    margin-left: 8px; /* 与summary对齐的指示线, slightly increased */
+    animation: fadeIn 0.3s ease-out;
+    background-color: #fafcff; /* Very light blue tint for content */
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 示意性趋势图 (#trend-chart-placeholder) */
+#trend-chart-placeholder {
+    position: relative;
+    min-height: 280px;
+    background-color: #F9FAFB; /* Same as page background or slightly different */
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    margin: 20px 0;
+    text-align: center;
+    border-radius: var(--border-radius-base); /* Added border radius */
+}
+.chart-fallback-text {
+    color: var(--color-tertiary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 240px; /* ensure fallback text is visible */
+}
+/* CSS for HTML/CSS chart (from previous task, if reused, will be here) */
+/* Assuming similar structure as report_optimized.html chart for now */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Fixed height for chart area */
+    margin: 0 auto; /* Center if needed */
+}
+.x-axis, .y-axis {
+    position: absolute;
+    background-color: #B0B0B0; /* Darker axis line color */
+}
+.y-axis { left: 0; bottom: 0; width: 1px; height: 100%; }
+.x-axis { left: 0; bottom: 0; width: 100%; height: 1px; }
+
+.y-axis-label, .x-axis-label {
+    position: absolute;
+    font-size: 0.8rem;
+    color: var(--color-secondary-text);
+}
+.y-axis-label { left: -35px; top: 50%; transform: translateY(-50%) rotate(-90deg); white-space: nowrap; }
+.x-axis-label { bottom: -25px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+.tick { position: absolute; font-size: 0.75rem; color: var(--color-tertiary-text); }
+.y-axis .tick { left: -30px; transform: translateY(50%); white-space: nowrap; }
+.x-axis .tick { bottom: -18px; transform: translateX(-50%); }
+
+.data-point {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 2;
+}
+.data-point::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 12px; /* Position label above point */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    box-shadow: var(--shadow-base);
+    z-index: 3;
+    color: var(--color-primary-text);
+}
+.current-point { background-color: var(--color-risk); border: 1px solid #d45a5a; }
+.median-point { background-color: var(--color-accent); border: 1px solid #2a5cb5; }
+.predicted-point { background-color: #FFC107; /* Amber/Warning */ border: 1px solid #dba806; }
+.predicted-point::after { color: #8c6d00; }
+
+.trend-line {
+    position: absolute;
+    background-color: var(--color-risk);
+    height: 2px;
+    transform-origin: left center;
+    z-index: 1;
+}
+.chart-notes {
+    position: absolute;
+    bottom: -30px; /* Below x-axis labels */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-tertiary-text);
+}
+.chart-notes p { margin-bottom: 0.1em; }
+.prediction-indicators { margin-top: 15px; }
+.prediction-indicators ul { list-style: none; padding-left: 0; }
+.prediction-indicators li { margin-bottom: 5px; font-size: 0.9rem; }
+
+
+/* 专家信息 (.expert-card) */
+.expert-card {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Increased gap */
+    padding: 15px;
+    background-color: #F9FAFB; /* Light background for card within module */
+    border-radius: var(--border-radius-base);
+}
+.expert-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white; /* Border for photo */
+    box-shadow: var(--shadow-base);
+}
+.expert-details h3 {
+    font-size: 1.125rem; /* 18px */
+    margin-bottom: 5px;
+    color: var(--color-primary-text);
+}
+.expert-details .expert-title {
+    font-size: 0.9rem;
+    color: var(--color-secondary-text);
+    font-weight: 400;
+    display: block; /* Make title take new line */
+    margin-bottom: 5px;
+}
+.expert-details p {
+    font-size: 0.875rem; /* 14px */
+    color: var(--color-secondary-text);
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+
+/* 按钮 (.btn, .btn-primary, .btn-secondary) - Placed earlier for sticky bar usage */
+.btn {
+    padding: 8px 16px; /* Default padding */
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-base);
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-weight: 500; /* Medium */
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.btn:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    color: white; /* Ensure text color remains white on hover */
+}
+.btn-secondary {
+    background-color: #E5E7EB; /* 浅灰色 */
+    color: var(--color-primary-text);
+    border: 1px solid #D1D5DB; /* Slightly darker border for definition */
+}
+.btn-secondary:hover {
+    background-color: #D1D5DB; /* 深一点的灰色 */
+    border-color: #B0B6BF;
+}
+
+/* 底部常驻操作栏 (.sticky-bottom-bar) */
+.sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-background-module);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.08); /* Softer shadow */
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    border-top: 1px solid var(--color-border);
+}
+.sticky-bottom-bar .btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+    margin: 0 8px; /* Increased margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.sticky-bottom-bar .icon-placeholder {
+    font-size: 1.2em; /* 调整图标大小 */
+    line-height: 1; /* Ensure icon aligns well with text */
+}
+
+/* 聊天弹窗 (.chat-popup) */
+.chat-popup {
+    position: fixed;
+    bottom: 75px; /* 高于常驻栏 (sticky bar height ~50-60px + margin) */
+    right: 15px;
+    width: 320px;
+    max-height: 450px;
+    background-color: var(--color-background-module);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius-base);
+    display: flex; /* Changed from none, JS will toggle a class */
+    flex-direction: column;
+    z-index: 999;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateY(20px) scale(0.95); /* Initial state for animation */
+    opacity: 0;
+    visibility: hidden; /* Use visibility for better accessibility with transitions */
+}
+.chat-popup.is-open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+.chat-header {
+    background-color: #F3F4F6; /* Consistent light grey */
+    padding: 12px 15px; /* Increased padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    border-top-left-radius: var(--border-radius-base);
+    border-top-right-radius: var(--border-radius-base);
+}
+.chat-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-primary-text);
+}
+.btn-close-chat {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-secondary-text);
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+.btn-close-chat:hover {
+    color: var(--color-primary-text);
+}
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    min-height: 250px;
+    background-color: #fff; /* White for messages area */
+}
+.chat-placeholder-text {
+    color: var(--color-tertiary-text);
+    font-style: italic;
+    text-align: center;
+    padding: 20px 0;
+}
+.chat-input-area {
+    padding: 12px 15px; /* Increased padding */
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 10px;
+    background-color: #F3F4F6; /* Consistent light grey */
+    border-bottom-left-radius: var(--border-radius-base);
+    border-bottom-right-radius: var(--border-radius-base);
+}
+#chat-input-field {
+    flex-grow: 1;
+    padding: 10px 12px; /* Increased padding */
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+#chat-input-field:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(52, 120, 246, 0.2);
+}
+#chat-send-btn {
+    padding: 10px 15px; /* Matched input field's vertical padding */
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+#chat-send-btn:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* 页脚 (Footer) */
+.report-footer {
+    text-align: center;
+    padding: 30px 15px; /* Increased padding */
+    margin-top: 30px;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-background-module); /* Consistent with modules */
+}
+.report-footer p {
+    margin-bottom: 0.5em;
+    font-size: 0.875rem;
+    color: var(--color-secondary-text);
+}
+.report-footer a {
+    color: var(--color-secondary-text);
+}
+.report-footer a:hover {
+    color: var(--color-accent);
+}
+
+
+/* IV. 响应式媒体查询 (Responsive Media Queries) */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 10px;
+    }
+    h1 { font-size: 1.8rem; } 
+    h2 { font-size: 1.4rem; } 
+    .module-title { font-size: 1.3rem; }
+
+    .info-grid {
+        grid-template-columns: 1fr; /* 单列显示 */
+    }
+    .overview-highlight {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .percentage-ring {
+        min-width: 70px;
+        height: 70px;
+    }
+    .percentage-value { font-size: 1.8rem; }
+
+    .sticky-bottom-bar {
+        padding: 10px;
+    }
+    .sticky-bottom-bar .btn {
+        font-size: 0.875rem;
+        padding: 8px 12px; /* Adjusted padding */
+        margin: 0 5px;
+    }
+    .chat-popup {
+        width: calc(100% - 20px);
+        right: 10px;
+        bottom: 65px; /* Adjust based on sticky bar height */
+        max-height: calc(100vh - 120px); /* More room for content */
+    }
+    .chat-messages { min-height: 200px; }
+}
+
+@media (max-width: 480px) {
+    body { 
+        font-size: 15px; 
+    }
+    h1 { font-size: 1.6rem; } 
+    h2 { font-size: 1.25rem; } 
+    .module-title { font-size: 1.15rem; }
+
+    .report-module {
+        padding: 15px;
+    }
+    .overview-highlight { padding: 15px; }
+    .expert-card { flex-direction: column; text-align: center; }
+
+    .sticky-bottom-bar .btn {
+        /* The original request to hide text might be too extreme.
+           Let's try to make them fit with text first. */
+        padding: 8px 10px; /* Further reduced padding */
+        font-size: 0.8rem;
+        gap: 5px;
+    }
+    /* If text still needs to hide, this could be an option:
+    .sticky-bottom-bar .btn .icon-placeholder + span { 
+        display: none; 
+    }
+    .sticky-bottom-bar .btn {
+        flex-grow: 0; 
+    } */
+    
+    .chat-popup {
+        width: calc(100% - 10px);
+        right: 5px;
+        bottom: 60px; /* Adjust based on sticky bar height */
+        max-height: calc(100vh - 100px);
+    }
+    .chat-messages { min-height: 150px; }
+    #chat-input-field, #chat-send-btn { padding: 8px 10px; font-size: 0.85rem; }
+    .prediction-indicators li { font-size: 0.85rem; }
+    .chart-notes { font-size: 0.75rem; bottom: -25px; }
+    .y-axis-label, .x-axis-label { font-size: 0.7rem; }
+    .y-axis-label { left: -30px; }
+    .x-axis-label { bottom: -20px; }
+    .tick { font-size: 0.65rem; }
+    .y-axis .tick { left: -25px; }
+    .x-axis .tick { bottom: -15px; }
+}

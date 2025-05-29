@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童视力健康筛查报告 (优化版) - 张慧妍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_reimagined.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header class="report-header">
+        <div class="container">
+            <h1>儿童视力健康筛查报告</h1>
+            <!-- 可选：副标题或LOGO占位 -->
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="report-main">
+        <div class="container">
+
+            <!-- 基本信息模块 -->
+            <section id="basic-info" class="report-module">
+                <h2 class="module-title">基本信息</h2>
+                <div class="info-grid">
+                    <p><strong>姓名:</strong> 张慧妍</p>
+                    <p><strong>性别:</strong> 女</p>
+                    <p><strong>年龄:</strong> 11岁6月</p>
+                    <p><strong>学号:</strong> **************640X</p>
+                    <p><strong>家长电话:</strong> *******9685</p>
+                    <p><strong>学校:</strong> 行知学校</p>
+                    <p><strong>年级:</strong> 五年级</p>
+                    <p><strong>班级:</strong> 4</p>
+                    <p><strong>检查日期:</strong> 2025-05-07</p>
+                </div>
+            </section>
+
+            <!-- 概览模块 -->
+            <section id="overview" class="report-module">
+                <h2 class="module-title">概览</h2>
+                <div class="overview-highlight">
+                    <div class="percentage-ring" aria-label="风险评估：98%，高风险"> <!-- 用于CSS实现环形图或突出背景 -->
+                        <span class="percentage-value">98%</span>
+                    </div>
+                    <p class="risk-description">近视度数和严重程度在同龄孩子中的排名已相当严重，超过了(98%)的同龄孩子（高风险区）。</p>
+                </div>
+                <details class="expandable-section">
+                    <summary class="expandable-summary"><span class="summary-title">专家寄语</span><span class="expand-icon"></span></summary>
+                    <div class="expandable-content">
+                        <p>遵从正确的防控措施，近视很有可能在不再增长，也可能因放任自流而近视加重成为高度近视，需要家长、老师特别重视！为获得准确的视力档案和AI评估，请 带孩子去江北区人民医院眼科进行二次建档检查(医学验光+眼轴测量)并上传至平台。</p>
+                    </div>
+                </details>
+            </section>
+
+            <!-- 详细报告数据模块 -->
+            <section id="detailed-data" class="report-module">
+                <h2 class="module-title">详细报告数据</h2>
+                
+                <div class="data-subsection">
+                    <h3 class="subsection-title">视力检查</h3>
+                    <div class="table-wrapper"> <!-- 用于表格响应式滚动 -->
+                        <table>
+                            <thead><tr><th>参数</th><th>右眼</th><th>左眼</th></tr></thead>
+                            <tbody>
+                                <tr><td>裸眼视力</td><td>3.9</td><td>4.2</td></tr>
+                                <tr><td>矫正视力</td><td>未记录</td><td>未记录</td></tr> <!-- 已处理 'nan' -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption">戴镜类型：框架眼镜</p>
+                </div>
+
+                <div class="data-subsection">
+                    <h3 class="subsection-title">屈光检查 (电脑验光)</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>参数</th><th>右眼</th><th>左眼</th></tr></thead>
+                            <tbody>
+                                <tr><td>球镜 (S)</td><td>-2.75</td><td>-5.0</td></tr>
+                                <tr><td>柱镜 (C)</td><td>-1.25</td><td>-1.5</td></tr>
+                                <tr><td>轴位 (A)</td><td>167.0</td><td>173.0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <details class="expandable-section">
+                    <summary class="expandable-summary"><span class="summary-title">数据解读小贴士</span><span class="expand-icon"></span></summary>
+                    <div class="expandable-content">
+                        <ul>
+                            <li><strong>裸眼视力：</strong>指不戴眼镜时能看清的视力。正常值通常在5.0或以上。</li>
+                            <li><strong>矫正视力：</strong>指配戴合适眼镜后能达到的最佳视力。</li>
+                            <li><strong>球镜 (S)：</strong>正数(+)表示远视，负数(-)表示近视。数值越大，度数越深。此值为近视发展趋势图中的主要参考值。</li>
+                            <li><strong>柱镜 (C)：</strong>表示散光的度数。通常为负值。</li>
+                            <li><strong>轴位 (A)：</strong>表示散光的方向，范围0-180度。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="expandable-section">
+                    <summary class="expandable-summary"><span class="summary-title">特别说明</span><span class="expand-icon"></span></summary>
+                    <div class="expandable-content">
+                        <p>近视筛查主要采用电脑验光，其结果可能存在一定误差，不一定能完全反映孩子真实的屈光状态。为确保诊断的准确性，请家长尽快带孩子前往具备专业资质的【江北区人民医院眼科】进行复查建档，补充更全面的医学验光（散瞳验光）、眼轴长度、角膜曲率等关键生理数据。</p>
+                    </div>
+                </details>
+            </section>
+
+            <!-- 近视发展趋势预测模块 -->
+            <section id="trend-prediction" class="report-module">
+                <h2 class="module-title">近视发展趋势预测 <span class="subtitle">(初步参考)</span></h2>
+                <!-- HTML结构化的示意图区域，通过CSS美化并通过JS辅助绘制线条 -->
+                <div id="trend-chart-placeholder" aria-label="近视发展趋势示意图，展示了当前度数、同龄中位数和18岁预测度数。">
+                    <div class="chart-container"> <!-- This container is styled by CSS and used by JS -->
+                        <div class="y-axis-label">球镜度数(D)</div>
+                        <div class="x-axis-label">年龄(岁)</div>
+                        <div class="y-axis">
+                            <span class="tick" style="bottom: 98%;">0D</span>
+                            <span class="tick" style="bottom: 80%;">-2D</span>
+                            <span class="tick" style="bottom: 60%;">-4D</span>
+                            <span class="tick" style="bottom: 40%;">-6D</span>
+                            <span class="tick" style="bottom: 20%;">-8D</span>
+                            <span class="tick" style="bottom: 0%;">-10D</span>
+                        </div>
+                        <div class="x-axis">
+                            <span class="tick" style="left: 5%;">10</span>
+                            <span class="tick" style="left: 25%;">12</span>
+                            <span class="tick" style="left: 45%;">14</span>
+                            <span class="tick" style="left: 65%;">16</span>
+                            <span class="tick" style="left: 85%;">18</span>
+                        </div>
+
+                        <!-- Data Points (positions match report_optimized for consistency) -->
+                        <div class="data-point current-point" style="left: 18%; bottom: 50%;" data-label="-5.00D (当前)"></div>
+                        <div class="data-point median-point" style="left: 18%; bottom: 90%;" data-label="-0.82D (同龄中位)"></div>
+                        <div class="data-point predicted-point" style="left: 85%; bottom: 18%;" data-label="-8.07D (18岁预测)"></div>
+
+                        <!-- Trend Line Element (JS will draw on this) -->
+                        <div class="trend-line" id="line-current-to-predicted"></div> <!-- JS expects an element with class trend-line -->
+                        
+                        <div class="chart-notes">
+                            <p>屈光发育百分位数参考：98%</p>
+                            <p style="font-size:0.8em; color:var(--color-tertiary-text);">注：此图为简化示意，非精确测绘，仅供参考。</p>
+                        </div>
+                    </div>
+                    <p class="chart-fallback-text" style="display:none;">近视发展趋势示意图区域</p> <!-- Hide fallback if chart HTML is present -->
+                </div>
+                <div class="prediction-indicators">
+                    <h3 class="subsection-title">关键筛查及预测指标 (左眼)</h3>
+                    <ul>
+                        <li><strong>检查时年龄：</strong>11岁6月</li>
+                        <li><strong>当前球镜 (S)：</strong>-5.00D</li>
+                        <li><strong>屈光发育百分位数参考：</strong>98%</li>
+                        <li><strong>预测18岁时球镜度数 (S)：</strong>-8.07D</li>
+                    </ul>
+                </div>
+                <details class="expandable-section">
+                    <summary class="expandable-summary"><span class="summary-title">趋势解读与数据来源</span><span class="expand-icon"></span></summary>
+                    <div class="expandable-content">
+                        <p>（此图基于当前电脑验光数据和统计模型生成，仅供参考。统计模型引用的平均生长曲线来自6–18 岁全国和重庆儿童的研究，数据来自由重庆市教委、重庆医科大学联合开发的近视防控专家服务平台。）</p>
+                        <p>图中展示了张慧妍同学 左眼 的屈光发育趋势预测。 检查时年龄为 11岁6月，该眼的电脑验光球镜度数为 -5.00D。 与同龄儿童的平均水平（中位数 -0.82D）相比，该眼目前的屈光状态发展百分位约为 98%。</p>
+                        <p>基于初步模型的预测，在18岁时，张慧妍同学的球镜度数可能发展到约 -8.07D。 此预测基于本次电脑验光数据，其准确性会随着二次建档（如医学验光和眼轴数据）的完善而显著提高。 近视发展的个体差异较大，受遗传、环境、用眼习惯等多种因素影响。</p>
+                        <p>凡是预测未来可能发生近视或近视快速进展的小朋友，我们均强烈建议进行二次建档检查（医学验光、眼轴测量等）。 这有助于我们明确诊断，修正并生成更个性化、更准确的视力发育档案及预测报告，并为您提供科学的防控建议。</p>
+                    </div>
+                </details>
+            </section>
+
+            <!-- 专家信息模块 -->
+            <section id="expert-info" class="report-module">
+                <h2 class="module-title">专家解读与建议</h2> <!-- 调整标题使其更明确 -->
+                <div class="expert-card">
+                    <img src="https://placehold.co/100x100/EAEAEA/333333?text=专家照片" alt="唐斌 主任医师" class="expert-photo">
+                    <div class="expert-details">
+                        <h3>唐斌 <span class="expert-title">主任医师</span></h3>
+                        <p>重庆市红十字会医院（江北区人民医院）眼科主任</p>
+                        <p>重庆市江北区眼科质控中心业务主任</p>
+                        <p>重庆市区县医学头雁人才</p>
+                    </div>
+                </div>
+                <!-- 原专家寄语已移至概览区，此处可放置更具体的建议或总结，或直接移除 -->
+            </section>
+        </div>
+    </main>
+
+    <!-- 底部常驻操作栏 -->
+    <div class="sticky-bottom-bar" id="sticky-cta-bar">
+        <button id="btn-appoint" class="btn btn-primary">
+            <span class="icon-placeholder">📅</span> 预约复查建档
+        </button>
+        <button id="open-chat-btn" class="btn btn-secondary">
+            <span class="icon-placeholder">💬</span> 在线咨询医生
+        </button>
+    </div>
+
+    <!-- 聊天弹窗 (初始隐藏) -->
+    <aside id="chat-area" class="chat-popup" style="display: none;" aria-live="polite" aria-modal="true" role="dialog" aria-labelledby="chat-header-title">
+        <div class="chat-header">
+            <h3 id="chat-header-title" class="chat-title">与医生沟通</h3>
+            <button id="close-chat-btn" class="btn-close-chat" aria-label="关闭聊天">&times;</button>
+        </div>
+        <div class="chat-messages" role="log" aria-atomic="false" aria-relevant="additions">
+            <p class="chat-placeholder-text"><em>咨询功能前端占位，实际消息需后端支持。请输入您的问题开始对话。</em></p>
+            <!-- 消息将通过JS动态添加 -->
+        </div>
+        <div class="chat-input-area">
+            <label for="chat-input-field" class="sr-only">输入聊天信息</label> <!-- Screen-reader only label -->
+            <input type="text" id="chat-input-field" placeholder="输入您的问题..." aria-label="聊天输入框">
+            <button id="chat-send-btn" class="btn-send-chat">发送</button>
+        </div>
+    </aside>
+    
+    <!-- 页脚 (可选，如果信息已在别处体现) -->
+    <footer class="report-footer">
+        <div class="container">
+            <p>&copy; 2024 VisionIQ Tech (或您的组织名称). 保留所有权利。</p>
+            <p><a href="#">隐私政策</a> | <a href="#">使用条款</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main_reimagined.js"></script>
+</body>
+</html>

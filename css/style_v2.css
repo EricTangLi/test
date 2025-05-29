@@ -1,0 +1,751 @@
+/* Table of Contents
+1. Global Styles & Resets
+2. Color Palette (Variables - Optional, but good practice)
+3. Typography
+4. Layout & Structure
+5. Components
+    5.1. Header
+    5.2. Footer
+    5.3. Buttons
+    5.4. Tables
+    5.5. Overview Highlight
+    5.6. Expandable Sections (Details/Summary)
+    5.7. Sticky Bottom Bar
+    5.8. Chat Popup
+    5.9. Trend Chart Placeholder
+    5.10. Info Grid
+    5.11. Expert Info
+6. Responsive Design
+*/
+
+/* 1. Global Styles & Resets */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f9; /* Light grey background */
+    color: #333; /* Default text color */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Color Palette (Variables) */
+:root {
+    --color-primary: #007bff; /* Example Blue */
+    --color-primary-darker: #0056b3;
+    --color-secondary: #6c757d; /* Example Grey */
+    --color-secondary-darker: #545b62;
+    --color-accent: #ff0000; /* Red for warnings/highlights */
+    --color-text-primary: #333333;
+    --color-text-secondary: #555555;
+    --color-border: #ddd;
+    --color-background-light: #ffffff;
+    --color-background-grey: #f0f0f0;
+    --color-background-page: #f4f7f9;
+}
+
+/* 3. Typography */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+}
+
+h1 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.75rem; /* 28px */
+    font-weight: 700;
+    margin-top: 1em; /* Add space before section titles */
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.3rem; /* 21px */
+    font-weight: 600;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+}
+
+h4 {
+    font-size: 1.1rem; /* 18px */
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1em;
+    color: var(--color-text-secondary);
+}
+
+ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-bottom: 1em;
+}
+
+ul li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--color-primary-darker);
+}
+
+strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* 4. Layout & Structure */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+header,
+main > section,
+footer {
+    padding: 20px 0;
+}
+
+main > section {
+    padding: 30px 0;
+    background-color: var(--color-background-light);
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+/* 5. Components */
+
+/* 5.1. Header */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-background-light);
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+header h1 {
+    color: var(--color-background-light);
+    margin: 0;
+    border-bottom: none;
+}
+
+/* 5.2. Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    background-color: var(--color-background-grey);
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+}
+footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* 5.3. Buttons */
+.btn {
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-darker);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary-darker);
+    color: white;
+    text-decoration: none;
+}
+
+/* 5.4. Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid var(--color-border);
+    padding: 10px 14px; /* Increased padding slightly */
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: var(--color-background-grey);
+    font-weight: 600;
+}
+
+.table-caption {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-top: -10px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+/* Responsive table wrapper */
+.table-responsive-wrapper {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.table-responsive-wrapper table {
+    margin-bottom: 0; /* Reset margin as wrapper handles it */
+}
+
+
+/* 5.5. Overview Highlight */
+.overview-highlight {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--color-accent);
+    background-color: #fff5f5; /* Light red background */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.overview-highlight .percentage {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+.overview-highlight p:last-child {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+    color: var(--color-text-primary);
+}
+
+/* 5.6. Expandable Sections (Details/Summary) */
+details.expandable-section {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+details.expandable-section:last-of-type {
+    border-bottom: none;
+}
+
+details.expandable-section summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 12px 0;
+    display: list-item; /* Use native arrow */
+    color: var(--color-primary);
+    font-size: 1.15rem; /* Make summary text slightly larger */
+}
+
+details.expandable-section summary:hover {
+    color: var(--color-primary-darker);
+}
+
+/* Custom arrow (optional) - uncomment if needed
+details.expandable-section summary::-webkit-details-marker { display: none; }
+details.expandable-section summary::marker { display:none; }
+details.expandable-section summary::before {
+    content: '▶ ';
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+details.expandable-section[open] summary::before {
+    content: '▼ ';
+}
+*/
+
+.expandable-content {
+    padding: 10px 0 15px 25px; /* Indent content slightly */
+    border-left: 3px solid var(--color-primary);
+    margin-left: 6px; /* Align with summary text if using default marker */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    background-color: #fdfdfd;
+}
+.expandable-content p, .expandable-content ul {
+    font-size: 0.95rem;
+}
+
+/* 5.7. Sticky Bottom Bar */
+.sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-background-light);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-top: 1px solid var(--color-border);
+}
+
+.sticky-bottom-bar .cta-buttons button,
+.sticky-bottom-bar .chat-trigger button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.sticky-bottom-bar .cta-buttons button:first-child {
+    margin-left: 0;
+}
+
+
+/* 5.8. Chat Popup */
+.chat-popup {
+    position: fixed;
+    bottom: 80px; /* Adjusted to be above sticky bar (approx 50-60px height + margin) */
+    right: 15px;
+    width: 320px; /* Slightly wider */
+    max-height: 450px; /* Increased max height */
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    z-index: 999; /* Below sticky bar if they were to overlap, but positioned not to */
+}
+
+.chat-header {
+    background-color: var(--color-background-grey);
+    padding: 12px 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.chat-header #close-chat-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    padding: 0;
+    line-height: 1;
+}
+.chat-header #close-chat-btn:hover {
+    color: var(--color-text-primary);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    min-height: 200px; /* Ensure a decent height */
+    background-color: #fdfdfd;
+}
+.chat-messages p {
+    font-size: 0.9rem;
+    margin-bottom: 0.8em;
+}
+
+.chat-input {
+    padding: 10px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    background-color: var(--color-background-grey);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.chat-input .btn-send {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+/* 5.9. Trend Chart Placeholder */
+#trend-chart-placeholder {
+    background-color: #f9f9f9;
+    color: #666;
+    border: 1px dashed var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    position: relative; /* For pseudo-elements */
+}
+
+#trend-chart-placeholder p {
+    margin: 0;
+}
+
+/* Basic pseudo-elements for axes - very rudimentary */
+#trend-chart-placeholder::before {
+    content: 'Y轴 (屈光度)';
+    position: absolute;
+    left: 10px; /* Adjusted for padding */
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 0.8rem;
+    color: #999;
+    transform-origin: left center;
+}
+
+#trend-chart-placeholder::after {
+    content: 'X轴 (年龄)';
+    position: absolute;
+    bottom: 10px; /* Adjusted for padding */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #999;
+}
+
+
+/* New Chart Styles for #trend-chart-placeholder */
+#trend-chart-placeholder {
+    position: relative;
+    min-height: 300px; /* Increased height for better visuals */
+    background-color: #f9f9f9;
+    padding: 30px 40px 50px 50px; /* top right bottom left - more space for labels */
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+    border-radius: 4px; /* Consistent with other elements */
+}
+
+/* Remove pseudo-elements for axes if using HTML axes */
+#trend-chart-placeholder::before,
+#trend-chart-placeholder::after {
+    content: none;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Fixed height for chart area */
+}
+
+.x-axis, .y-axis {
+    position: absolute;
+    background-color: #aaa; /* Axis line color */
+}
+
+.y-axis {
+    left: 0;
+    bottom: 0;
+    width: 2px; /* Axis line thickness */
+    height: 100%;
+}
+
+.x-axis {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; /* Axis line thickness */
+}
+
+.y-axis-label, .x-axis-label {
+    position: absolute;
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.y-axis-label {
+    left: -45px; /* Position outside Y-axis */
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    white-space: nowrap;
+}
+
+.x-axis-label {
+    bottom: -35px; /* Position below X-axis */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.tick {
+    position: absolute;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.y-axis .tick {
+    left: -35px; /* Position to the left of Y-axis */
+    transform: translateY(50%); /* Center align with tick mark (if any) */
+    white-space: nowrap;
+}
+
+.x-axis .tick {
+    bottom: -20px; /* Position below X-axis */
+    transform: translateX(-50%); /* Center align text */
+}
+
+.data-point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, 50%); /* Center the point on its coordinates */
+    z-index: 2;
+}
+
+.data-point::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 15px; /* Position label above the point */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 3; /* Ensure label is above point and lines */
+}
+
+.current-point {
+    background-color: #ff6347; /* Tomato Red */
+    border: 1px solid #cc4c38;
+}
+.current-point::after { color: #cc4c38; }
+
+.median-point {
+    background-color: #4682b4; /* Steel Blue */
+    border: 1px solid #3a6a92;
+}
+.median-point::after { color: #3a6a92; }
+
+.predicted-point {
+    background-color: #32cd32; /* Lime Green */
+    border: 1px solid #28a428;
+}
+.predicted-point::after { color: #28a428; }
+
+
+.trend-line {
+    position: absolute;
+    background-color: #ff6347; /* Match current point, or use a distinct line color */
+    height: 2px; /* Line thickness */
+    transform-origin: left center;
+    z-index: 1; /* Behind data points but above axes background if any */
+}
+
+.chart-notes {
+    position: absolute;
+    bottom: -45px; /* Position below x-axis labels */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.chart-notes p {
+    margin-bottom: 0.2em;
+}
+
+/* Responsive adjustments for chart labels if needed */
+@media (max-width: 480px) {
+    #trend-chart-placeholder {
+        padding: 25px 30px 45px 40px; /* Adjust padding for smaller screens */
+        min-height: 250px;
+    }
+    .chart-container {
+        height: 200px; /* Reduce chart height */
+    }
+    .y-axis-label { left: -35px; font-size: 0.75rem;}
+    .x-axis-label { bottom: -30px; font-size: 0.75rem;}
+    .y-axis .tick { left: -30px; font-size: 0.7rem;}
+    .x-axis .tick { bottom: -18px; font-size: 0.7rem;}
+    .data-point::after { font-size: 0.7rem; padding: 2px 4px; }
+    .chart-notes { bottom: -40px; font-size: 0.8rem; }
+}
+
+/* 5.10. Info Grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px 20px;
+}
+.info-grid p {
+    margin-bottom: 0.5em;
+}
+
+/* 5.11. Expert Info */
+#expert-info {
+    text-align: center;
+}
+#expert-info img {
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    border: 3px solid var(--color-background-grey);
+}
+#expert-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+}
+#expert-info p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.3em;
+}
+
+
+/* 6. Responsive Design */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px; /* Slightly smaller base */
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.2rem; }
+    h4 { font-size: 1rem; }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    /* Tables become scrollable if not already wrapped */
+    table:not(.table-responsive-wrapper table) {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .sticky-bottom-bar {
+        padding: 10px;
+        flex-direction: column; /* Stack elements */
+        gap: 10px;
+    }
+    .sticky-bottom-bar .cta-buttons,
+    .sticky-bottom-bar .chat-trigger {
+        width: 100%;
+        display: flex;
+    }
+    .sticky-bottom-bar .cta-buttons button,
+    .sticky-bottom-bar .chat-trigger button {
+        flex-grow: 1;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .sticky-bottom-bar .cta-buttons button:first-child,
+    .sticky-bottom-bar .chat-trigger button:first-child {
+        margin-left: 0;
+    }
+     .sticky-bottom-bar .cta-buttons button:last-child,
+    .sticky-bottom-bar .chat-trigger button:last-child {
+        margin-right: 0;
+    }
+
+
+    .chat-popup {
+        bottom: 100px; /* Adjust if sticky bar height changes */
+        right: 10px;
+        width: calc(100% - 20px); /* Full width minus padding */
+        max-height: 350px;
+    }
+    .info-grid {
+        grid-template-columns: 1fr; /* Stack info items */
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px; /* Even smaller base for mobile */
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.1rem; }
+    h4 { font-size: 0.95rem; }
+
+    .overview-highlight .percentage {
+        font-size: 40px;
+    }
+
+    .sticky-bottom-bar {
+        padding: 8px;
+        gap: 8px;
+    }
+    .sticky-bottom-bar .cta-buttons button,
+    .sticky-bottom-bar .chat-trigger button {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .chat-popup {
+        bottom: 95px; /* Adjust if sticky bar height changes significantly */
+        max-height: 300px;
+    }
+    .chat-input input[type="text"],
+    .chat-input .btn-send {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+    #trend-chart-placeholder::before,
+    #trend-chart-placeholder::after {
+        font-size: 0.7rem; /* Make axis labels smaller */
+    }
+    #expert-info h3 {
+        font-size: 1.2rem;
+    }
+}
